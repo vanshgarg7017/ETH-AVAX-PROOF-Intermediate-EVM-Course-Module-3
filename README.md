@@ -30,26 +30,21 @@ contract Token{
 }
 ```
 # Connecting Local Hardhat Network with Remix
-Follow the steps below to connect your local Hardhat network with Remix and interact with a contract.
+Follow these steps to connect your local Hardhat network with Remix and interact with a contract:
 
-Step 1: Navigate to Project Directory
-Open your terminal and navigate to the project directory where your Solidity contract is located.
+1. Open your terminal and navigate to the project directory where your Solidity contract is located.
 
-Step 2: Run `npm install @remix-project/remixd` Command
-In the terminal, run the following command to start the `remixd` service:
+2.  Run `npm install @remix-project/remixd` Command. In the terminal, run the following command to start the remixd service:
 ```
 npx remixd -s <project_directory>--remix-ide https://remix.ethereum.org
 ```
 Replace `<project_directory>` with the absolute path to your project directory. This will create a connection between Remix IDE and your local project directory.
 
-Step 3: Open Remix IDE
-Open your web browser and go to [Remix IDE](https://remix.ethereum.org).
+3. Open your web browser and go to [Remix IDE](https://remix.ethereum.org).
 
-Step 4: Connect with Localhost Workspaces
-In Remix IDE, Switch "default_workspace" to "Localhost" button in the top-right "Workspaces" corner. This will connect your project directory on remix IDE.
+4. In Remix IDE, Switch "default_workspace" to "Localhost" button in the top-right "Workspaces" corner. This will connect your project directory on remix IDE.
 
-Step 5: Compile the contract
-In the Remix IDE, find and open your ".sol" file in your contract folder and switch to the "Solidity Compiler" tab in the left panel. Click on the "Compile" button to compile the contract. Make sure the compiler version matches the pragma statement in your contract.
+5.  In Remix IDE, locate and open your ".sol" file in the contract folder. Then, navigate to the "Solidity Compiler" tab on the left panel. Click on the "Compile" button to compile the contract. Ensure that the compiler version matches the pragma statement in your contract.
 
 Example Contract:
 ```solidity
@@ -60,13 +55,13 @@ contract MyToken {
     // Contract code here...
 }
 ```
-Step 6: Deploy and Interact with the Contract
+6. Deploy and Interact with the Contract
 
-Step 7:Confirm the deployment transaction in Remix.
+7. Confirm the deployment transaction in Remix.
 
-Step 8: Wait for the deployment transaction to be confirmed on the local Hardhat network.
+8. Wait for the deployment transaction to be confirmed on the local Hardhat network.
 
-Step 9: Once the contract is deployed, you will see the contract address in the Remix console. Make note of this address for future interactions.
+9. Once the contract is deployed, you will see the contract address in the Remix console. Make note of this address for future interactions.
 
 ## License
 
