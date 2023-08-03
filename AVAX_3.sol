@@ -1,19 +1,36 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.18;
-contract Token{
-    string public tokenName="ComputerScience";
-    string public TokenAbbrv="CS";
-    uint public totalsupply=0;
-    mapping (address=>uint) public _mybalance;
-    // mint function
-    function mint(address _myaddress, uint _myvalue) public {
-        totalsupply+=_myvalue;
-        _mybalance[_myaddress]+=_myvalue;
+
+contract Token {
+    string public tokenName = "ComputerScience";
+    string public tokenAbbrv = "CS";
+    uint public totalSupply = 0;
+    mapping (address => uint) public _mybalances;
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
     }
-    function burn(address _myaddress, uint _myvalue) public {
-        if(_mybalance[_myaddress]>=_myvalue){
-            totalsupply-=_myvalue;
-            _mybalance[_myaddress]-=_myvalue;
-        }
+    // Only authur can mint the token
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the owner can call this function");
+        _;
     }
+
+    function mint(address _reciver, uint _myamount) public onlyOwner {
+        totalSupply += _myamount;
+        _mybalances[_reciver] += _myamount;
+    }
+
+    function burn(uint _myamount) public {
+        require(_mybalances[msg.sender] >= _myamount, "Insufficient balance");
+        totalSupply -= _myamount;
+        _mybalances[msg.sender] -= _myamount;
+    }
+    // Transfer Function
+    function transfer(address _reciver, uint _myamount) public {
+    require(_mybalances[msg.sender] >= _myamount, "Not enough balance to complete the transfer");
+    _mybalances[msg.sender] -= _myamount;
+    _mybalances[_reciver] += _myamount;
+}
 }
