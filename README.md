@@ -14,19 +14,40 @@ To run this program, you can use Remix, an online Solidity IDE. To get started, 
 Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., functionError.sol). Write the code in the file.
 ```javascript
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-contract Token{
-    // public variables here
-    string public tokenName="ComputerScience";
-    string public TokenAbbrv="CS";
-    uint public totalsupply=0;
-    // mapping variable here
-    mapping (address=>uint) public _mybalance;
-    // mint function
-    function mint(address _myaddress, uint _myvalue) public {
-        totalsupply+=_myvalue;
-        _mybalance[_myaddress]+=_myvalue;
+pragma solidity 0.8.18;
+
+contract Token {
+    string public tokenName = "ComputerScience";
+    string public tokenAbbrv = "CS";
+    uint public totalSupply = 0;
+    mapping (address => uint) public _mybalances;
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
     }
+    // Only authur can mint the token
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the owner can call this function");
+        _;
+    }
+
+    function mint(address _reciver, uint _myamount) public onlyOwner {
+        totalSupply += _myamount;
+        _mybalances[_reciver] += _myamount;
+    }
+
+    function burn(uint _myamount) public {
+        require(_mybalances[msg.sender] >= _myamount, "Insufficient balance");
+        totalSupply -= _myamount;
+        _mybalances[msg.sender] -= _myamount;
+    }
+    // Transfer Function
+    function transfer(address _reciver, uint _myamount) public {
+    require(_mybalances[msg.sender] >= _myamount, "Not enough balance to complete the transfer");
+    _mybalances[msg.sender] -= _myamount;
+    _mybalances[_reciver] += _myamount;
+}
 }
 ```
 # Connecting Local Hardhat Network with Remix
