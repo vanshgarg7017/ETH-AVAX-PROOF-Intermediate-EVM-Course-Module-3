@@ -87,4 +87,4 @@ This project is licensed under the MIT License
 
 # Video Walkthrough
 Explaining the Code of ETH and AVAX Proof Intermediate Course Final assessment of Module 3 - Watch Video
-https://www.loom.com/share/32742ae3a5944bc0aa0423ea19f8d567?sid=02eb36fb-9963-47a0-9cca-e1883bb86c51
+https://www.loom.com/share/d9f1b42b98b141ccbc6eab2c6e045e52
