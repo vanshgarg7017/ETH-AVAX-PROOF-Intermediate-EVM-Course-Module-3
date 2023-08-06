@@ -14,15 +14,12 @@ To run this program, you can use Remix, an online Solidity IDE. To get started, 
 Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., functionError.sol). Write the code in the file.
 ```javascript
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.18;
-
+pragma solidity ^0.8.0;
 contract Token {
-    string public tokenName = "ComputerScience";
-    string public tokenAbbrv = "CS";
+    string public tokenName = "AvaxModule";
     uint public totalSupply = 0;
     mapping (address => uint) public _mybalances;
     address public owner;
-
     constructor() {
         owner = msg.sender;
     }
@@ -43,10 +40,10 @@ contract Token {
         _mybalances[msg.sender] -= _myamount;
     }
     // Transfer Function
-    function transfer(address _reciver, uint _myamount) public {
+    function transfer(address _transferto, uint _myamount) public {
     require(_mybalances[msg.sender] >= _myamount, "Not enough balance to complete the transfer");
     _mybalances[msg.sender] -= _myamount;
-    _mybalances[_reciver] += _myamount;
+    _mybalances[_transferto] += _myamount;
 }
 }
 ```
