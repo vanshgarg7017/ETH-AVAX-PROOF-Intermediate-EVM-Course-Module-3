@@ -1,13 +1,10 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.18;
-
+pragma solidity ^0.8.0;
 contract Token {
-    string public tokenName = "ComputerScience";
-    string public tokenAbbrv = "CS";
+    string public tokenName = "AvaxModule";
     uint public totalSupply = 0;
     mapping (address => uint) public _mybalances;
     address public owner;
-
     constructor() {
         owner = msg.sender;
     }
@@ -28,9 +25,9 @@ contract Token {
         _mybalances[msg.sender] -= _myamount;
     }
     // Transfer Function
-    function transfer(address _reciver, uint _myamount) public {
+    function transfer(address _transferto, uint _myamount) public {
     require(_mybalances[msg.sender] >= _myamount, "Not enough balance to complete the transfer");
     _mybalances[msg.sender] -= _myamount;
-    _mybalances[_reciver] += _myamount;
+    _mybalances[_transferto] += _myamount;
 }
 }
